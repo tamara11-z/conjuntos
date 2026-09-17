@@ -1,0 +1,303 @@
+```css
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+    background: #f4f6fb;
+    color: #222;
+}
+
+/* CONTENEDOR PRINCIPAL */
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+
+    margin: 0 auto;
+    padding: 30px 0;
+}
+
+/* ENCABEZADO */
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+header h1 {
+    color: #4b3f8f;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* PREGUNTA */
+
+.question {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    text-align: center;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+    margin-bottom: 20px;
+}
+
+.question h2 {
+    color: #4b3f8f;
+}
+
+.question p {
+    font-size: 18px;
+}
+
+/* BOTONES */
+
+.buttons {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+button {
+    border: none;
+
+    padding: 13px 22px;
+
+    border-radius: 10px;
+
+    background: #6c63c9;
+
+    color: white;
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #5149a5;
+
+    transform: scale(1.03);
+}
+
+/* RESULTADO */
+
+.resultado {
+    background: #e9e7ff;
+
+    padding: 18px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-size: 17px;
+
+    margin-bottom: 30px;
+
+    color: #3d3477;
+}
+
+/* DIAGRAMA DE VENN */
+
+.venn-section {
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+
+    margin-bottom: 30px;
+
+    text-align: center;
+}
+
+.venn-section h2 {
+    color: #4b3f8f;
+}
+
+.venn {
+    position: relative;
+
+    width: 550px;
+
+    height: 330px;
+
+    max-width: 100%;
+
+    margin: 30px auto;
+}
+
+/* CÍRCULOS */
+
+.circle {
+    position: absolute;
+
+    width: 240px;
+
+    height: 240px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-weight: bold;
+
+    font-size: 16px;
+}
+
+.circle1 {
+    left: 40px;
+
+    background: rgba(80, 130, 255, 0.45);
+}
+
+.circle2 {
+    right: 40px;
+
+    background: rgba(255, 100, 140, 0.45);
+}
+
+/* TEXTO DE LOS CÍRCULOS */
+
+.circle1 span {
+    margin-top: -110px;
+}
+
+.circle2 span {
+    margin-top: -110px;
+}
+
+/* INTERSECCIÓN */
+
+.intersection {
+    position: absolute;
+
+    left: 215px;
+
+    top: 125px;
+
+    font-size: 13px;
+
+    font-weight: bold;
+
+    color: #333;
+}
+
+/* OPERACIONES */
+
+.operations {
+    text-align: center;
+
+    margin-bottom: 30px;
+}
+
+.operations h2 {
+    color: #4b3f8f;
+}
+
+.cards {
+    display: flex;
+
+    justify-content: center;
+
+    flex-wrap: wrap;
+
+    gap: 20px;
+}
+
+.card {
+    width: 280px;
+
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.10);
+}
+
+.card h3 {
+    color: #4b3f8f;
+
+    font-size: 21px;
+}
+
+.card p {
+    line-height: 1.5;
+
+    color: #555;
+}
+
+/* PIE DE PÁGINA */
+
+footer {
+    text-align: center;
+
+    padding: 20px;
+
+    color: #777;
+
+    font-size: 14px;
+}
+
+/* RESPONSIVE PARA CELULAR */
+
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 30px;
+    }
+
+    .venn {
+        height: 270px;
+    }
+
+    .circle {
+        width: 180px;
+        height: 180px;
+    }
+
+    .circle1 {
+        left: 10px;
+    }
+
+    .circle2 {
+        right: 10px;
+    }
+
+    .intersection {
+        left: 43%;
+        top: 105px;
+    }
+
+}
+```
