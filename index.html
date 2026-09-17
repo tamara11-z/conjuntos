@@ -1,0 +1,118 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Juego de Conjuntos</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <header>
+            <h1>🎓 Juego de Conjuntos</h1>
+            <p>
+                Descubre qué materias prefieren los estudiantes
+                y observa las relaciones entre los conjuntos.
+            </p>
+        </header>
+
+        <section class="question">
+            <h2>📚 Pregunta 1</h2>
+
+            <p>
+                ¿Qué materia te gusta más?
+            </p>
+
+            <div class="buttons">
+                <button onclick="seleccionar('Matemáticas')">
+                    📐 Matemáticas
+                </button>
+
+                <button onclick="seleccionar('Programación')">
+                    💻 Programación
+                </button>
+
+                <button onclick="seleccionar('Inglés')">
+                    📖 Inglés
+                </button>
+            </div>
+        </section>
+
+        <section id="resultado" class="resultado">
+            Selecciona una materia para comenzar.
+        </section>
+
+        <section class="venn-section">
+
+            <h2>🔵 Diagrama de Venn</h2>
+
+            <div class="venn">
+
+                <div class="circle circle1">
+                    <span>Matemáticas</span>
+                </div>
+
+                <div class="circle circle2">
+                    <span>Programación</span>
+                </div>
+
+                <div class="intersection">
+                    Intersección
+                </div>
+
+            </div>
+
+        </section>
+
+        <section class="operations">
+
+            <h2>🔢 Operaciones de conjuntos</h2>
+
+            <div class="cards">
+
+                <div class="card">
+                    <h3>∪ Unión</h3>
+                    <p>
+                        Reúne todos los elementos que pertenecen
+                        a cualquiera de los conjuntos.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>∩ Intersección</h3>
+                    <p>
+                        Contiene los elementos que pertenecen
+                        a ambos conjuntos.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h3>− Diferencia</h3>
+                    <p>
+                        Contiene los elementos que pertenecen
+                        a un conjunto pero no al otro.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <footer>
+            <p>Proyecto de Matemáticas Discretas</p>
+            <p>Temática: Conjuntos</p>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
