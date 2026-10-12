@@ -1,58 +1,109 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Personajes y sus materias favoritas
+    // Personajes y sus características según la narrativa
     const personajes = [
         {
             nombre: "Antonio",
-            materias: ["Historia de la Ingeniería"]
+            intereses: [
+                "Historia de la Informática",
+                "Inteligencia Artificial",
+                "Trabajo en Equipo"
+            ]
         },
         {
             nombre: "Enrique",
-            materias: ["Programación"]
+            intereses: [
+                "Desarrollo Web",
+                "Programación",
+                "Creatividad"
+            ]
         },
         {
             nombre: "Juan",
-            materias: ["Matemática Discreta"]
+            intereses: [
+                "Videojuegos",
+                "Resolución de Problemas",
+                "Matemática Discreta"
+            ]
         },
         {
             nombre: "Caspian",
-            materias: ["Sistemas Operativos"]
+            intereses: [
+                "Ciencia de Datos",
+                "Matemáticas",
+                "Programación",
+                "Sistemas Operativos"
+            ]
         },
         {
             nombre: "Aylen",
-            materias: ["Programación"]
+            intereses: [
+                "Inteligencia Artificial",
+                "Resolución de Problemas",
+                "Programación"
+            ]
         },
         {
             nombre: "Ángela",
-            materias: ["Programación"]
+            intereses: [
+                "Trabajo en Equipo",
+                "Ciencia de Datos",
+                "Programación"
+            ]
         },
         {
             nombre: "Brenda",
-            materias: ["Sistemas Operativos"]
+            intereses: [
+                "Creatividad",
+                "Inteligencia Artificial",
+                "Sistemas Operativos"
+            ]
         },
         {
             nombre: "Marcelo",
-            materias: ["Historia de la Ingeniería"]
+            intereses: [
+                "Adaptabilidad",
+                "Videojuegos",
+                "Historia de la Ingeniería"
+            ]
         },
         {
             nombre: "Franco",
-            materias: ["Sistemas Operativos"]
+            intereses: [
+                "Resolución de Problemas",
+                "Desarrollo Web",
+                "Sistemas Operativos"
+            ]
         },
         {
             nombre: "Dylan",
-            materias: ["Matemática Discreta"]
+            intereses: [
+                "Creatividad",
+                "Videojuegos",
+                "Matemática Discreta"
+            ]
         }
     ];
 
-    // Materias disponibles para formar los conjuntos
-    const materias = [
+    // Categorías que se pueden comparar en el juego
+    const categorias = [
+        "Historia de la Informática",
         "Historia de la Ingeniería",
+        "Inteligencia Artificial",
+        "Desarrollo Web",
         "Programación",
+        "Videojuegos",
         "Matemática Discreta",
-        "Sistemas Operativos"
+        "Matemáticas",
+        "Ciencia de Datos",
+        "Sistemas Operativos",
+        "Resolución de Problemas",
+        "Trabajo en Equipo",
+        "Creatividad",
+        "Adaptabilidad"
     ];
 
-    // Elementos de la página
+    // Elementos del HTML
     const selectorA = document.getElementById("materiaA");
     const selectorB = document.getElementById("materiaB");
     const boton = document.getElementById("calcular");
@@ -68,44 +119,48 @@ document.addEventListener("DOMContentLoaded", function () {
     const soloB = document.getElementById("soloB");
 
     const resultadoUnion = document.getElementById("union");
-    const resultadoInterseccion = document.getElementById("interseccion");
-    const resultadoDiferencia = document.getElementById("diferencia");
+    const resultadoInterseccion =
+        document.getElementById("interseccion");
+    const resultadoDiferencia =
+        document.getElementById("diferencia");
 
     const conclusion = document.getElementById("conclusion");
 
-    // Comprobar que los elementos necesarios existen
+    // Comprobar que existen los elementos necesarios
     if (!selectorA || !selectorB || !boton) {
-        console.error("No se encontraron los selectores o el botón.");
+        console.error(
+            "No se encontraron los selectores o el botón de cálculo."
+        );
         return;
     }
 
-    // Cargar las materias en los dos selectores
-    function cargarMaterias() {
+    // Cargar las categorías en los selectores
+    function cargarCategorias() {
         selectorA.replaceChildren();
         selectorB.replaceChildren();
 
-        for (let i = 0; i < materias.length; i++) {
+        for (let i = 0; i < categorias.length; i++) {
             const opcionA = document.createElement("option");
-            opcionA.value = materias[i];
-            opcionA.textContent = materias[i];
+            opcionA.value = categorias[i];
+            opcionA.textContent = categorias[i];
             selectorA.appendChild(opcionA);
 
             const opcionB = document.createElement("option");
-            opcionB.value = materias[i];
-            opcionB.textContent = materias[i];
+            opcionB.value = categorias[i];
+            opcionB.textContent = categorias[i];
             selectorB.appendChild(opcionB);
         }
 
         selectorA.value = "Programación";
-        selectorB.value = "Sistemas Operativos";
+        selectorB.value = "Inteligencia Artificial";
     }
 
-    // Obtener los personajes que pertenecen a una materia
-    function obtenerConjunto(materia) {
+    // Obtener los personajes que pertenecen a una categoría
+    function obtenerConjunto(categoria) {
         const conjunto = [];
 
         for (let i = 0; i < personajes.length; i++) {
-            if (personajes[i].materias.includes(materia)) {
+            if (personajes[i].intereses.includes(categoria)) {
                 conjunto.push(personajes[i].nombre);
             }
         }
@@ -113,7 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return conjunto;
     }
 
-    // Mostrar una lista de personajes en la página
+    // Mostrar personajes en la página
     function mostrarPersonajes(elemento, lista) {
         if (!elemento) {
             return;
@@ -133,50 +188,50 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Mostrar los diez personajes del universo
+    // Mostrar todos los personajes del universo
     function mostrarUniverso() {
-        mostrarPersonajes(
-            universo,
-            personajes.map(function (personaje) {
-                return personaje.nombre;
-            })
-        );
+        const nombres = [];
+
+        for (let i = 0; i < personajes.length; i++) {
+            nombres.push(personajes[i].nombre);
+        }
+
+        mostrarPersonajes(universo, nombres);
     }
 
-    // Calcular los conjuntos seleccionados
+    // Calcular unión, intersección y diferencias
     function calcularConjuntos() {
-        const materiaSeleccionadaA = selectorA.value;
-        const materiaSeleccionadaB = selectorB.value;
+        const categoriaA = selectorA.value;
+        const categoriaB = selectorB.value;
 
-        // No permitir seleccionar la misma materia dos veces
-        if (materiaSeleccionadaA === materiaSeleccionadaB) {
+        if (categoriaA === categoriaB) {
             if (mensaje) {
                 mensaje.textContent =
-                    "Selecciona dos materias diferentes para comparar los conjuntos.";
+                    "Selecciona dos categorías diferentes.";
             }
 
             return;
         }
 
-        const conjuntoA = obtenerConjunto(materiaSeleccionadaA);
-        const conjuntoB = obtenerConjunto(materiaSeleccionadaB);
+        const conjuntoA = obtenerConjunto(categoriaA);
+        const conjuntoB = obtenerConjunto(categoriaB);
 
-        // Intersección: personajes que están en ambos conjuntos
+        // Personajes que pertenecen a ambos conjuntos
         const interseccion = conjuntoA.filter(function (personaje) {
             return conjuntoB.includes(personaje);
         });
 
-        // Diferencia A - B: personajes que están solo en A
+        // Personajes que pertenecen solo al conjunto A
         const diferenciaA = conjuntoA.filter(function (personaje) {
             return !conjuntoB.includes(personaje);
         });
 
-        // Diferencia B - A: personajes que están solo en B
+        // Personajes que pertenecen solo al conjunto B
         const diferenciaB = conjuntoB.filter(function (personaje) {
             return !conjuntoA.includes(personaje);
         });
 
-        // Unión: personajes que están en A o en B, sin repetir
+        // Personajes que pertenecen a A o a B
         const union = conjuntoA.concat(
             conjuntoB.filter(function (personaje) {
                 return !conjuntoA.includes(personaje);
@@ -185,11 +240,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Actualizar los nombres de los conjuntos
         if (nombreA) {
-            nombreA.textContent = materiaSeleccionadaA;
+            nombreA.textContent = categoriaA;
         }
 
         if (nombreB) {
-            nombreB.textContent = materiaSeleccionadaB;
+            nombreB.textContent = categoriaB;
         }
 
         // Actualizar el diagrama de Venn
@@ -197,17 +252,16 @@ document.addEventListener("DOMContentLoaded", function () {
         mostrarPersonajes(ambos, interseccion);
         mostrarPersonajes(soloB, diferenciaB);
 
-        // Mostrar los resultados de las operaciones
+        // Mostrar la unión y la intersección
         mostrarPersonajes(resultadoUnion, union);
         mostrarPersonajes(resultadoInterseccion, interseccion);
 
+        // Mostrar las dos diferencias
         if (resultadoDiferencia) {
             resultadoDiferencia.replaceChildren();
 
             const tituloA = document.createElement("p");
-            tituloA.textContent =
-                "A - B (" + materiaSeleccionadaA + "):";
-
+            tituloA.textContent = "A - B (" + categoriaA + "):";
             resultadoDiferencia.appendChild(tituloA);
 
             const listaA = document.createElement("div");
@@ -215,9 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
             resultadoDiferencia.appendChild(listaA);
 
             const tituloB = document.createElement("p");
-            tituloB.textContent =
-                "B - A (" + materiaSeleccionadaB + "):";
-
+            tituloB.textContent = "B - A (" + categoriaB + "):";
             resultadoDiferencia.appendChild(tituloB);
 
             const listaB = document.createElement("div");
@@ -228,36 +280,37 @@ document.addEventListener("DOMContentLoaded", function () {
         // Mostrar un mensaje con los resultados
         if (mensaje) {
             mensaje.textContent =
-                "¡Conjuntos calculados correctamente! " +
-                "A tiene " + conjuntoA.length + " personajes, " +
-                "B tiene " + conjuntoB.length + " personajes, " +
-                "y " + interseccion.length +
-                " pertenecen a ambos conjuntos.";
+                "¡Conjuntos calculados! El conjunto A tiene " +
+                conjuntoA.length +
+                " personajes y el conjunto B tiene " +
+                conjuntoB.length +
+                ". Hay " +
+                interseccion.length +
+                " personaje(s) en común.";
         }
 
-        // Mostrar una conclusión
+        // Explicar el resultado de la intersección
         if (conclusion) {
             if (interseccion.length > 0) {
                 conclusion.textContent =
-                    "Los conjuntos tienen " + interseccion.length +
-                    " personaje(s) en común: " +
+                    "Los personajes que comparten ambas categorías son: " +
                     interseccion.join(", ") + ".";
             } else {
                 conclusion.textContent =
-                    "Los conjuntos no tienen personajes en común. " +
-                    "Su intersección es el conjunto vacío.";
+                    "Ningún personaje pertenece a ambas categorías. " +
+                    "La intersección es el conjunto vacío.";
             }
         }
     }
 
-    // Preparar la página
-    cargarMaterias();
+    // Preparar el juego
+    cargarCategorias();
     mostrarUniverso();
 
-    // Ejecutar los cálculos cuando se pulse el botón
+    // Calcular cuando se pulse el botón
     boton.addEventListener("click", calcularConjuntos);
 
-    // Mostrar los resultados iniciales
+    // Mostrar un resultado inicial
     calcularConjuntos();
 
 });
