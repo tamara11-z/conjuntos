@@ -1,5 +1,5 @@
 // UNIVERSO DE ESTUDIANTES
-// Estos datos son ejemplos y se pueden cambiar por los de Misión VALIS.
+// Datos ficticios para demostrar las operaciones de conjuntos.
 
 const estudiantes = [
     {
@@ -44,7 +44,7 @@ const estudiantes = [
     }
 ];
 
-// OBTENER LOS ELEMENTOS DE LA PÁGINA
+// ELEMENTOS HTML
 
 const selectorA = document.getElementById("materiaA");
 const selectorB = document.getElementById("materiaB");
@@ -67,7 +67,7 @@ const resultadoDiferencia =
 const mensaje = document.getElementById("mensaje");
 const conclusion = document.getElementById("conclusion");
 
-// MOSTRAR LOS ESTUDIANTES DEL UNIVERSO
+// MOSTRAR EL UNIVERSO
 
 function mostrarUniverso() {
     universo.innerHTML = "";
@@ -96,7 +96,7 @@ function obtenerConjunto(materia) {
     return conjunto;
 }
 
-// CALCULAR LA UNIÓN DE DOS CONJUNTOS
+// UNIÓN: A ∪ B
 
 function calcularUnion(conjuntoA, conjuntoB) {
     const union = conjuntoA.slice();
@@ -110,7 +110,7 @@ function calcularUnion(conjuntoA, conjuntoB) {
     return union;
 }
 
-// CALCULAR LA INTERSECCIÓN DE DOS CONJUNTOS
+// INTERSECCIÓN: A ∩ B
 
 function calcularInterseccion(conjuntoA, conjuntoB) {
     const interseccion = [];
@@ -124,7 +124,7 @@ function calcularInterseccion(conjuntoA, conjuntoB) {
     return interseccion;
 }
 
-// CALCULAR LA DIFERENCIA A - B
+// DIFERENCIA: A − B
 
 function calcularDiferencia(conjuntoA, conjuntoB) {
     const diferencia = [];
@@ -138,13 +138,13 @@ function calcularDiferencia(conjuntoA, conjuntoB) {
     return diferencia;
 }
 
-// MOSTRAR LOS ELEMENTOS DE UN CONJUNTO EN LA PÁGINA
+// MOSTRAR LOS ESTUDIANTES
 
 function mostrarConjunto(elemento, conjunto) {
     elemento.innerHTML = "";
 
     if (conjunto.length === 0) {
-        elemento.textContent = "Ningún estudiante";
+        elemento.textContent = "Conjunto vacío (∅)";
         return;
     }
 
@@ -158,7 +158,7 @@ function mostrarConjunto(elemento, conjunto) {
     });
 }
 
-// MOSTRAR UNA OPERACIÓN Y SU CANTIDAD DE ELEMENTOS
+// MOSTRAR EL RESULTADO Y SU CANTIDAD
 
 function mostrarResultado(elemento, conjunto) {
     elemento.innerHTML = "";
@@ -173,18 +173,14 @@ function mostrarResultado(elemento, conjunto) {
     mostrarConjunto(elemento, conjunto);
 }
 
-// CALCULAR TODOS LOS CONJUNTOS
+// CALCULAR LOS CONJUNTOS
 
 function calcularConjuntos() {
     const materiaA = selectorA.value;
     const materiaB = selectorB.value;
 
-    // Obtener los estudiantes que prefieren cada materia.
-
     const conjuntoA = obtenerConjunto(materiaA);
     const conjuntoB = obtenerConjunto(materiaB);
-
-    // Calcular las tres operaciones.
 
     const union = calcularUnion(conjuntoA, conjuntoB);
 
@@ -194,24 +190,21 @@ function calcularConjuntos() {
     const diferencia =
         calcularDiferencia(conjuntoA, conjuntoB);
 
-    // Actualizar los nombres del diagrama.
+    const estudiantesSoloB =
+        calcularDiferencia(conjuntoB, conjuntoA);
+
+    // ACTUALIZAR LOS NOMBRES
 
     nombreA.textContent = "A: " + materiaA;
     nombreB.textContent = "B: " + materiaB;
 
-    // Mostrar las regiones del diagrama de Venn.
+    // ACTUALIZAR EL DIAGRAMA
 
-    const estudiantesSoloA =
-        calcularDiferencia(conjuntoA, conjuntoB);
-
-    const estudiantesSoloB =
-        calcularDiferencia(conjuntoB, conjuntoA);
-
-    mostrarConjunto(soloA, estudiantesSoloA);
+    mostrarConjunto(soloA, diferencia);
     mostrarConjunto(ambos, interseccion);
     mostrarConjunto(soloB, estudiantesSoloB);
 
-    // Mostrar los resultados de las operaciones.
+    // MOSTRAR LAS OPERACIONES
 
     mostrarResultado(resultadoUnion, union);
 
@@ -225,37 +218,39 @@ function calcularConjuntos() {
         diferencia
     );
 
-    // Mostrar un mensaje con las cantidades obtenidas.
+    // MOSTRAR UN RESUMEN
 
     mensaje.textContent =
-        "El conjunto A tiene " + conjuntoA.length +
-        " estudiantes y el conjunto B tiene " +
-        conjuntoB.length + " estudiantes.";
+        "A tiene " + conjuntoA.length +
+        " estudiantes y B tiene " + conjuntoB.length +
+        " estudiantes.";
 
-    // Explicar el resultado de la comparación.
+    // MOSTRAR LA CONCLUSIÓN
 
     if (materiaA === materiaB) {
         conclusion.textContent =
-            "Elegiste la misma materia para A y B. " +
-            "Por eso, ambos conjuntos contienen a los mismos " +
-            "estudiantes. La diferencia A − B está vacía.";
+            "Seleccionaste la misma materia para ambos conjuntos. " +
+            "Por eso, A y B tienen los mismos elementos. " +
+            "La unión y la intersección son iguales a ese conjunto, " +
+            "mientras que A − B es el conjunto vacío.";
     } else {
         conclusion.textContent =
-            "Hay " + union.length +
-            " estudiantes que prefieren al menos una de las dos " +
-            "materias. " + interseccion.length +
-            " estudiantes prefieren ambas materias y " +
-            diferencia.length +
-            " estudiantes prefieren " + materiaA +
+            "La unión contiene " + union.length +
+            " estudiantes que prefieren al menos una materia. " +
+            "La intersección contiene " + interseccion.length +
+            " estudiantes que prefieren ambas. " +
+            "La diferencia A − B contiene " + diferencia.length +
+            " estudiantes que prefieren " + materiaA +
             ", pero no " + materiaB + ".";
     }
 }
 
-// ACTIVAR EL BOTÓN
+// BOTÓN DE CÁLCULO
 
 botonCalcular.addEventListener("click", calcularConjuntos);
 
-// MOSTRAR LOS DATOS INICIALES
+// INICIAR LA PÁGINA
 
 mostrarUniverso();
+calcularConjuntos();
 calcularConjuntos();
