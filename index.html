@@ -3,159 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Misión VALIS | Juego de Conjuntos</title>
-
+    <title>Laboratorio de Conjuntos | Misión VALIS</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
+<div class="container">
 
     <header class="hero">
-        <div class="etiqueta">CAPSTONE · MATEMÁTICA DISCRETA</div>
-
-        <h1>Misión VALIS</h1>
-
+        <p class="etiqueta">MISIÓN VALIS · MATEMÁTICAS DISCRETAS</p>
+        <h1>Laboratorio de Conjuntos</h1>
         <p class="subtitulo">
-            Descubre las relaciones entre los personajes utilizando
-            conjuntos matemáticos.
+            Descubre qué materias prefieren los estudiantes y explora
+            las relaciones entre los conjuntos.
         </p>
-
-        <div class="hero-decoration"></div>
+        <div class="hero-decoration">A ∪ B &nbsp; A ∩ B &nbsp; A − B</div>
     </header>
 
-    <main class="contenedor">
-
+    <main>
         <section class="panel historia">
-            <h2>La misión</h2>
-
+            <span class="numero">MISIÓN 01</span>
+            <h2>El desafío de VALIS</h2>
             <p>
-                En Misión VALIS, cada personaje tiene intereses,
-                habilidades y materias que forman parte de su historia.
-                Tu misión es analizar las relaciones entre los personajes
-                y descubrir cómo se relacionan mediante los conjuntos.
+                En la misión VALIS, el equipo debe analizar las preferencias
+                académicas de un grupo de estudiantes utilizando la teoría
+                de conjuntos.
             </p>
-
             <p>
-                El universo está formado por diez personajes:
-                Antonio, Enrique, Juan, Caspian, Aylen, Ángela,
-                Brenda, Marcelo, Franco y Dylan.
+                Cada conjunto representa a los estudiantes que prefieren
+                una materia. Al comparar dos conjuntos, podrás identificar
+                intereses compartidos y preferencias exclusivas.
+            </p>
+            <p>
+                <strong>Tu misión:</strong> seleccionar dos materias,
+                calcular las operaciones entre sus conjuntos e interpretar
+                los resultados para resolver el desafío.
             </p>
         </section>
 
         <section class="panel">
-            <h2>1. El universo</h2>
-
+            <span class="numero">MISIÓN 02</span>
+            <h2>Selecciona las materias</h2>
             <p>
-                Estos son todos los personajes que forman parte
-                de nuestro universo de estudio.
+                Elige una materia para el conjunto A y otra para el conjunto B.
+                Después, pulsa el botón para calcular los resultados.
             </p>
 
-            <div id="universo" class="estudiantes"></div>
-        </section>
-
-        <section class="panel">
-            <h2>2. Selecciona los conjuntos</h2>
-
-            <p>
-                Elige dos conjuntos diferentes para descubrir
-                qué personajes pertenecen a cada uno.
-            </p>
-
-            <div class="seleccion-conjuntos">
-
-                <div class="grupo">
-                    <label for="materiaA">Primer conjunto</label>
-                    <select id="materiaA"></select>
+            <div class="selectores">
+                <div class="selector">
+                    <label for="materiaA">Conjunto A</label>
+                    <select id="materiaA">
+                        <option value="Matemáticas">Matemáticas</option>
+                        <option value="Programación">Programación</option>
+                        <option value="Inglés">Inglés</option>
+                    </select>
                 </div>
 
-                <div class="grupo">
-                    <label for="materiaB">Segundo conjunto</label>
-                    <select id="materiaB"></select>
+                <div class="selector">
+                    <label for="materiaB">Conjunto B</label>
+                    <select id="materiaB">
+                        <option value="Programación">Programación</option>
+                        <option value="Matemáticas">Matemáticas</option>
+                        <option value="Inglés">Inglés</option>
+                    </select>
                 </div>
-
             </div>
 
-            <button id="calcular" type="button">
-                Calcular conjuntos
-            </button>
-
-            <p id="mensaje" aria-live="polite"></p>
+            <button id="calcular">Calcular conjuntos ↗</button>
+            <p id="mensaje" class="mensaje" aria-live="polite">
+                Selecciona las materias para comenzar.
+            </p>
         </section>
 
         <section class="panel">
-            <h2>3. Diagrama de Venn</h2>
-
+            <span class="numero">MISIÓN 03</span>
+            <h2>Universo de estudiantes</h2>
             <p>
-                Observa qué personajes pertenecen únicamente al primer
-                conjunto, cuáles pertenecen a ambos y cuáles están
-                solamente en el segundo.
+                El universo U contiene a todos los estudiantes incluidos
+                en esta demostración. Cada estudiante forma parte del
+                universo, independientemente de sus preferencias.
+            </p>
+            <div id="universo" class="lista-universo"></div>
+            <p class="nota">
+                U = conjunto de todos los estudiantes considerados.
+            </p>
+        </section>
+
+        <section class="panel">
+            <span class="numero">MISIÓN 04</span>
+            <h2>Diagrama de Venn</h2>
+            <p>
+                Observa cómo se distribuyen los estudiantes según las
+                materias seleccionadas. La zona compartida representa
+                a quienes prefieren ambas materias.
             </p>
 
-            <div class="diagrama">
+            <div class="leyenda">
+                <span class="color-a"></span>
+                <span id="nombreA">Conjunto A</span>
+                <span class="color-b"></span>
+                <span id="nombreB">Conjunto B</span>
+            </div>
 
-                <div class="conjunto conjunto-a">
-                    <h3 id="nombreA">Conjunto P</h3>
+            <div class="venn">
+                <div class="region region-a">
+                    <h3>Solo A</h3>
+                    <p class="descripcion-region">A − B</p>
                     <div id="soloA" class="estudiantes"></div>
                 </div>
 
-                <div class="interseccion">
+                <div class="region region-interseccion">
                     <h3>Intersección</h3>
+                    <p class="descripcion-region">A ∩ B</p>
                     <div id="ambos" class="estudiantes"></div>
                 </div>
 
-                <div class="conjunto conjunto-b">
-                    <h3 id="nombreB">Conjunto S</h3>
+                <div class="region region-b">
+                    <h3>Solo B</h3>
+                    <p class="descripcion-region">B − A</p>
                     <div id="soloB" class="estudiantes"></div>
                 </div>
-
-            </div>
-        </section>
-
-        <section class="panel">
-            <h2>4. Operaciones entre conjuntos</h2>
-
-            <div class="resultado">
-                <h3>Unión</h3>
-                <p>
-                    Personajes que pertenecen al primer conjunto,
-                    al segundo o a ambos.
-                </p>
-                <div id="union" class="estudiantes"></div>
             </div>
 
-            <div class="resultado">
-                <h3>Intersección</h3>
-                <p>
-                    Personajes que pertenecen a los dos conjuntos.
-                </p>
-                <div id="interseccion" class="estudiantes"></div>
-            </div>
-
-            <div class="resultado">
-                <h3>Diferencia</h3>
-                <p>
-                    Personajes que pertenecen a un conjunto,
-                    pero no al otro.
-                </p>
-                <div id="diferencia" class="estudiantes"></div>
-            </div>
-        </section>
-
-        <section class="panel">
-            <h2>5. Conclusión</h2>
-
-            <p id="conclusion">
-                Selecciona dos conjuntos para analizar sus relaciones.
+            <p class="nota">
+                Cada estudiante aparece en la región que corresponde
+                a sus preferencias académicas.
             </p>
         </section>
 
+        <section class="panel">
+            <span class="numero">MISIÓN 05</span>
+            <h2>Operaciones de conjuntos</h2>
+            <p>
+                Utiliza las operaciones para comparar los conjuntos,
+                encontrar elementos comunes y reconocer diferencias.
+            </p>
+
+            <div class="operaciones">
+                <article class="operacion">
+                    <div class="simbolo">∪</div>
+                    <h3>Unión</h3>
+                    <p class="formula">A ∪ B</p>
+                    <p>
+                        Reúne a los estudiantes que pertenecen a A,
+                        a B o a ambos conjuntos, sin repetirlos.
+                    </p>
+                    <div id="union" class="resultado"></div>
+                </article>
+
+                <article class="operacion">
+                    <div class="simbolo">∩</div>
+                    <h3>Intersección</h3>
+                    <p class="formula">A ∩ B</p>
+                    <p>
+                        Contiene a los estudiantes que pertenecen
+                        simultáneamente a ambos conjuntos.
+                    </p>
+                    <div id="interseccion" class="resultado"></div>
+                </article>
+
+                <article class="operacion">
+                    <div class="simbolo">−</div>
+                    <h3>Diferencia</h3>
+                    <p class="formula">A − B</p>
+                    <p>
+                        Contiene a los estudiantes que pertenecen a A,
+                        pero no a B.
+                    </p>
+                    <div id="diferencia" class="resultado"></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel conclusion-panel">
+            <span class="numero">INFORME FINAL</span>
+            <h2>¿Qué descubriste?</h2>
+            <p>
+                Analiza los resultados para comprender las relaciones
+                entre las preferencias académicas de los estudiantes.
+            </p>
+            <div id="conclusion" class="conclusion">
+                Calcula los conjuntos para descubrir sus relaciones.
+            </div>
+        </section>
     </main>
 
     <footer>
-        <p>Misión VALIS · Capstone de Matemática Discreta</p>
+        <p class="footer-titulo">MISIÓN VALIS</p>
+        <p>Proyecto de Matemáticas Discretas</p>
+        <p>Teoría de Conjuntos · Unión · Intersección · Diferencia</p>
     </footer>
 
+</div>
 </body>
 </html>
