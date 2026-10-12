@@ -1,28 +1,25 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // Personajes y conjuntos según la narrativa
+    // Personajes y materias relacionadas con sus narrativas
     const personajes = [
-        { nombre: "Antonio", materias: ["H"] },
+        { nombre: "Antonio", materias: ["P"] },
         { nombre: "Enrique", materias: ["P"] },
         { nombre: "Juan", materias: ["M"] },
         { nombre: "Caspian", materias: ["S", "P", "M"] },
         { nombre: "Aylen", materias: ["P"] },
         { nombre: "Ángela", materias: ["P"] },
         { nombre: "Brenda", materias: ["S"] },
-        { nombre: "Marcelo", materias: ["H"] },
+        { nombre: "Marcelo", materias: ["M"] },
         { nombre: "Franco", materias: ["S"] },
         { nombre: "Dylan", materias: ["M"] }
     ];
 
-    // Nombres completos de los conjuntos
     const nombresMaterias = {
         P: "Programación",
         S: "Sistemas Operativos",
-        M: "Matemática Discreta",
-        H: "Historia de la Ingeniería"
+        M: "Matemática Discreta"
     };
 
-    // Elementos de la página
     const selectorA = document.getElementById("materiaA");
     const selectorB = document.getElementById("materiaB");
     const boton = document.getElementById("calcular");
@@ -45,34 +42,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const conclusion = document.getElementById("conclusion");
 
-    // Comprobar que existen los elementos necesarios
     if (!selectorA || !selectorB || !boton) {
         console.error("No se encontraron los elementos del juego.");
         return;
     }
 
-    // Cargar los cuatro conjuntos en los selectores
+    // Cargar las tres materias en los selectores
     function cargarMaterias() {
         selectorA.replaceChildren();
         selectorB.replaceChildren();
 
-        const claves = ["P", "S", "M", "H"];
+        const claves = ["P", "S", "M"];
 
         for (let i = 0; i < claves.length; i++) {
             const opcionA = document.createElement("option");
-
             opcionA.value = claves[i];
             opcionA.textContent =
                 claves[i] + " - " + nombresMaterias[claves[i]];
 
-            selectorA.appendChild(opcionA);
-
             const opcionB = document.createElement("option");
-
             opcionB.value = claves[i];
             opcionB.textContent =
                 claves[i] + " - " + nombresMaterias[claves[i]];
 
+            selectorA.appendChild(opcionA);
             selectorB.appendChild(opcionB);
         }
 
@@ -80,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         selectorB.value = "S";
     }
 
-    // Obtener los personajes que pertenecen a un conjunto
+    // Obtener los personajes de una materia
     function obtenerConjunto(materia) {
         const conjunto = [];
 
@@ -93,7 +86,7 @@ document.addEventListener("DOMContentLoaded", function () {
         return conjunto;
     }
 
-    // Mostrar los personajes en la página
+    // Mostrar una lista de personajes
     function mostrarPersonajes(elemento, lista) {
         if (!elemento) {
             return;
@@ -108,9 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         for (let i = 0; i < lista.length; i++) {
             const etiqueta = document.createElement("span");
-
             etiqueta.textContent = lista[i];
-
             elemento.appendChild(etiqueta);
         }
     }
@@ -126,18 +117,16 @@ document.addEventListener("DOMContentLoaded", function () {
         mostrarPersonajes(universo, nombres);
     }
 
-    // Calcular las operaciones entre dos conjuntos
+    // Calcular las operaciones entre conjuntos
     function calcularConjuntos() {
         const materiaA = selectorA.value;
         const materiaB = selectorB.value;
 
-        // Evitar comparar un conjunto consigo mismo
         if (materiaA === materiaB) {
             if (mensaje) {
                 mensaje.textContent =
-                    "Selecciona dos conjuntos diferentes.";
+                    "Selecciona dos materias diferentes.";
             }
-
             return;
         }
 
@@ -149,12 +138,12 @@ document.addEventListener("DOMContentLoaded", function () {
             return conjuntoB.includes(personaje);
         });
 
-        // Diferencia A - B: personajes que solo están en A
+        // Diferencia A - B
         const diferenciaA = conjuntoA.filter(function (personaje) {
             return !conjuntoB.includes(personaje);
         });
 
-        // Diferencia B - A: personajes que solo están en B
+        // Diferencia B - A
         const diferenciaB = conjuntoB.filter(function (personaje) {
             return !conjuntoA.includes(personaje);
         });
@@ -168,11 +157,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         // Actualizar los nombres del diagrama
         if (nombreA) {
-            nombreA.textContent = "Conjunto " + materiaA;
+            nombreA.textContent =
+                materiaA + " - " + nombresMaterias[materiaA];
         }
 
         if (nombreB) {
-            nombreB.textContent = "Conjunto " + materiaB;
+            nombreB.textContent =
+                materiaB + " - " + nombresMaterias[materiaB];
         }
 
         // Mostrar los resultados en el diagrama de Venn
@@ -180,76 +171,60 @@ document.addEventListener("DOMContentLoaded", function () {
         mostrarPersonajes(ambos, interseccion);
         mostrarPersonajes(soloB, diferenciaB);
 
-        // Mostrar la unión y la intersección
         mostrarPersonajes(resultadoUnion, union);
         mostrarPersonajes(resultadoInterseccion, interseccion);
 
-        // Mostrar las diferencias de ambos conjuntos
+        // Mostrar las dos diferencias
         if (resultadoDiferencia) {
             resultadoDiferencia.replaceChildren();
 
             const tituloA = document.createElement("p");
-
-            tituloA.textContent =
-                "A - B (Conjunto " + materiaA + " - Conjunto " +
-                materiaB + "):";
-
+            tituloA.textContent = materiaA + " - " + materiaB +
+                " (A - B):";
             resultadoDiferencia.appendChild(tituloA);
 
             const listaA = document.createElement("div");
-
             mostrarPersonajes(listaA, diferenciaA);
-
             resultadoDiferencia.appendChild(listaA);
 
             const tituloB = document.createElement("p");
-
-            tituloB.textContent =
-                "B - A (Conjunto " + materiaB + " - Conjunto " +
-                materiaA + "):";
-
+            tituloB.textContent = materiaB + " - " + materiaA +
+                " (B - A):";
             resultadoDiferencia.appendChild(tituloB);
 
             const listaB = document.createElement("div");
-
             mostrarPersonajes(listaB, diferenciaB);
-
             resultadoDiferencia.appendChild(listaB);
         }
 
-        // Mostrar un resumen de los resultados
+        // Mostrar un mensaje con los resultados
         if (mensaje) {
             mensaje.textContent =
-                "El conjunto " + materiaA + " tiene " +
-                conjuntoA.length + " personajes y el conjunto " +
-                materiaB + " tiene " + conjuntoB.length +
-                ". Hay " + interseccion.length +
-                " personaje(s) en común.";
+                "Conjunto A: " + conjuntoA.length +
+                " personajes. Conjunto B: " + conjuntoB.length +
+                " personajes. En común: " + interseccion.length + ".";
         }
 
-        // Mostrar una conclusión
+        // Explicar la intersección
         if (conclusion) {
             if (interseccion.length > 0) {
                 conclusion.textContent =
-                    "Los personajes que pertenecen a ambos conjuntos son: " +
+                    "Los personajes que pertenecen a ambas materias son: " +
                     interseccion.join(", ") + ".";
             } else {
                 conclusion.textContent =
-                    "Los conjuntos no tienen personajes en común. " +
+                    "No hay personajes en común entre estas materias. " +
                     "La intersección es el conjunto vacío.";
             }
         }
     }
 
-    // Preparar la miniweb
+    // Preparar y ejecutar el juego
     cargarMaterias();
-
     mostrarUniverso();
 
-    // Ejecutar los cálculos al pulsar el botón
     boton.addEventListener("click", calcularConjuntos);
 
-    // Mostrar los resultados iniciales
     calcularConjuntos();
 
 });
