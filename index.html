@@ -3,379 +3,198 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Laboratorio de Conjuntos | Misión VALIS</title>
-
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 
 <body>
+<div class="container">
 
-    <div class="container">
+    <header class="hero">
+        <p class="etiqueta">MISIÓN VALIS · MATEMÁTICAS DISCRETAS</p>
+        <h1>Laboratorio de Conjuntos</h1>
+        <p class="subtitulo">
+            Descubre qué materias prefieren los estudiantes y explora
+            las relaciones entre los conjuntos.
+        </p>
+        <div class="hero-decoration">A ∪ B &nbsp; A ∩ B &nbsp; A − B</div>
+    </header>
 
-        <!-- ENCABEZADO PRINCIPAL -->
-        <header class="hero">
+    <main>
+        <section class="panel historia">
+            <span class="numero">MISIÓN 01</span>
+            <h2>El desafío de VALIS</h2>
+            <p>
+                En la misión VALIS, el equipo debe analizar las preferencias
+                académicas de un grupo de estudiantes utilizando la teoría
+                de conjuntos.
+            </p>
+            <p>
+                Cada conjunto representa a los estudiantes que prefieren
+                una materia. Al comparar dos conjuntos, podrás identificar
+                intereses compartidos y preferencias exclusivas.
+            </p>
+            <p>
+                <strong>Tu misión:</strong> seleccionar dos materias,
+                calcular las operaciones entre sus conjuntos e interpretar
+                los resultados para resolver el desafío.
+            </p>
+        </section>
 
-            <p class="etiqueta">
-                MISIÓN VALIS · MATEMÁTICAS DISCRETAS
+        <section class="panel">
+            <span class="numero">MISIÓN 02</span>
+            <h2>Selecciona las materias</h2>
+            <p>
+                Elige una materia para el conjunto A y otra para el conjunto B.
+                Después, pulsa el botón para calcular los resultados.
             </p>
 
-            <h1>Laboratorio de Conjuntos</h1>
+            <div class="selectores">
+                <div class="selector">
+                    <label for="materiaA">Conjunto A</label>
+                    <select id="materiaA">
+                        <option value="Matemáticas">Matemáticas</option>
+                        <option value="Programación">Programación</option>
+                        <option value="Inglés">Inglés</option>
+                    </select>
+                </div>
 
-            <p class="subtitulo">
-                Descubre qué materias prefieren los estudiantes,
-                analiza sus intereses y explora las relaciones
-                entre los conjuntos.
-            </p>
-
-            <div class="hero-decoration">
-                A ∪ B &nbsp; A ∩ B &nbsp; A − B
+                <div class="selector">
+                    <label for="materiaB">Conjunto B</label>
+                    <select id="materiaB">
+                        <option value="Programación">Programación</option>
+                        <option value="Matemáticas">Matemáticas</option>
+                        <option value="Inglés">Inglés</option>
+                    </select>
+                </div>
             </div>
 
-        </header>
-
-        <main>
-
-            <!-- MISIÓN 01: HISTORIA -->
-            <section class="panel historia">
-
-                <span class="numero">MISIÓN 01</span>
-
-                <h2>El desafío de VALIS</h2>
-
-                <p>
-                    En la misión VALIS, el equipo necesita analizar
-                    las preferencias académicas de un grupo de
-                    estudiantes utilizando la teoría de conjuntos.
-                </p>
-
-                <p>
-                    Cada conjunto representa a los estudiantes que
-                    prefieren una materia determinada. Al comparar
-                    dos conjuntos, podrás identificar intereses
-                    compartidos, preferencias exclusivas y relaciones
-                    entre diferentes grupos.
-                </p>
-
-                <p>
-                    <strong>Tu misión:</strong> seleccionar dos materias,
-                    construir sus conjuntos y utilizar operaciones
-                    matemáticas para interpretar los resultados.
-                </p>
-
-                <p>
-                    Al completar el desafío, podrás explicar cómo
-                    la unión, la intersección y la diferencia ayudan
-                    a organizar información y resolver problemas.
-                </p>
-
-            </section>
-
-
-            <!-- MISIÓN 02: SELECCIÓN DE MATERIAS -->
-            <section class="panel">
-
-                <span class="numero">MISIÓN 02</span>
-
-                <h2>Selecciona las materias</h2>
-
-                <p>
-                    Elige una materia para el conjunto A y otra para
-                    el conjunto B. Después, pulsa el botón para
-                    calcular las operaciones y visualizar los resultados.
-                </p>
-
-                <div class="selectores">
-
-                    <div class="selector">
-
-                        <label for="materiaA">
-                            Conjunto A
-                        </label>
-
-                        <select id="materiaA">
-                            <option value="Matemáticas">
-                                Matemáticas
-                            </option>
-
-                            <option value="Programación">
-                                Programación
-                            </option>
-
-                            <option value="Inglés">
-                                Inglés
-                            </option>
-                        </select>
-
-                    </div>
-
-                    <div class="selector">
-
-                        <label for="materiaB">
-                            Conjunto B
-                        </label>
-
-                        <select id="materiaB">
-                            <option value="Programación">
-                                Programación
-                            </option>
-
-                            <option value="Matemáticas">
-                                Matemáticas
-                            </option>
-
-                            <option value="Inglés">
-                                Inglés
-                            </option>
-                        </select>
-
-                    </div>
-
-                </div>
-
-                <button id="calcular">
-                    Calcular conjuntos ↗
-                </button>
-
-                <p id="mensaje" class="mensaje" aria-live="polite">
-                    Selecciona las materias para comenzar.
-                </p>
-
-            </section>
-
-
-            <!-- MISIÓN 03: UNIVERSO -->
-            <section class="panel">
-
-                <span class="numero">MISIÓN 03</span>
-
-                <h2>Universo de estudiantes</h2>
-
-                <p>
-                    En teoría de conjuntos, el universo U contiene
-                    todos los elementos que se consideran dentro
-                    de un problema. En esta actividad, representa
-                    a todos los estudiantes incluidos en la demostración.
-                </p>
-
-                <p>
-                    Cada estudiante forma parte del universo,
-                    independientemente de cuáles sean sus preferencias
-                    académicas.
-                </p>
-
-                <div id="universo" class="lista-universo"></div>
-
-                <p class="nota">
-                    U = conjunto de todos los estudiantes considerados
-                    en la actividad.
-                </p>
-
-            </section>
-
-
-            <!-- MISIÓN 04: DIAGRAMA DE VENN -->
-            <section class="panel">
-
-                <span class="numero">MISIÓN 04</span>
-
-                <h2>Diagrama de Venn</h2>
-
-                <p>
-                    El diagrama de Venn representa gráficamente
-                    la relación entre dos conjuntos. Sus regiones
-                    permiten observar qué estudiantes pertenecen
-                    exclusivamente a A, exclusivamente a B o a ambos.
-                </p>
-
-                <div class="leyenda">
-
-                    <span class="color-a"></span>
-                    <span id="nombreA">Conjunto A</span>
-
-                    <span class="color-b"></span>
-                    <span id="nombreB">Conjunto B</span>
-
-                </div>
-
-                <div class="venn">
-
-                    <!-- ELEMENTOS EXCLUSIVOS DE A -->
-                    <div class="region region-a">
-
-                        <h3>Solo A</h3>
-
-                        <p class="descripcion-region">
-                            A − B
-                        </p>
-
-                        <div id="soloA" class="estudiantes"></div>
-
-                    </div>
-
-
-                    <!-- ELEMENTOS COMUNES -->
-                    <div class="region region-interseccion">
-
-                        <h3>Intersección</h3>
-
-                        <p class="descripcion-region">
-                            A ∩ B
-                        </p>
-
-                        <div id="ambos" class="estudiantes"></div>
-
-                    </div>
-
-
-                    <!-- ELEMENTOS EXCLUSIVOS DE B -->
-                    <div class="region region-b">
-
-                        <h3>Solo B</h3>
-
-                        <p class="descripcion-region">
-                            B − A
-                        </p>
-
-                        <div id="soloB" class="estudiantes"></div>
-
-                    </div>
-
-                </div>
-
-                <p class="nota">
-                    Cada estudiante aparece en la región que corresponde
-                    a sus preferencias académicas.
-                </p>
-
-            </section>
-
-
-            <!-- MISIÓN 05: OPERACIONES -->
-            <section class="panel">
-
-                <span class="numero">MISIÓN 05</span>
-
-                <h2>Operaciones de conjuntos</h2>
-
-                <p>
-                    Las operaciones de conjuntos permiten comparar
-                    grupos, identificar elementos comunes y distinguir
-                    los que pertenecen exclusivamente a uno de ellos.
-                </p>
-
-                <div class="operaciones">
-
-                    <!-- UNIÓN -->
-                    <article class="operacion">
-
-                        <div class="simbolo">∪</div>
-
-                        <h3>Unión</h3>
-
-                        <p class="formula">
-                            A ∪ B
-                        </p>
-
-                        <p>
-                            Reúne a todos los estudiantes que pertenecen
-                            a A, a B o a ambos conjuntos. Cada estudiante
-                            se cuenta una sola vez.
-                        </p>
-
-                        <div id="union" class="resultado"></div>
-
-                    </article>
-
-
-                    <!-- INTERSECCIÓN -->
-                    <article class="operacion">
-
-                        <div class="simbolo">∩</div>
-
-                        <h3>Intersección</h3>
-
-                        <p class="formula">
-                            A ∩ B
-                        </p>
-
-                        <p>
-                            Contiene a los estudiantes que pertenecen
-                            simultáneamente a los dos conjuntos.
-                            Representa los intereses compartidos.
-                        </p>
-
-                        <div id="interseccion" class="resultado"></div>
-
-                    </article>
-
-
-                    <!-- DIFERENCIA -->
-                    <article class="operacion">
-
-                        <div class="simbolo">−</div>
-
-                        <h3>Diferencia</h3>
-
-                        <p class="formula">
-                            A − B
-                        </p>
-
-                        <p>
-                            Contiene a los estudiantes que pertenecen
-                            al conjunto A, pero no al conjunto B.
-                            Representa una preferencia exclusiva.
-                        </p>
-
-                        <div id="diferencia" class="resultado"></div>
-
-                    </article>
-
-                </div>
-
-            </section>
-
-
-            <!-- INFORME FINAL -->
-            <section class="panel conclusion-panel">
-
-                <span class="numero">INFORME FINAL</span>
-
-                <h2>¿Qué descubriste?</h2>
-
-                <p>
-                    Interpreta los resultados de las operaciones
-                    para comprender mejor las preferencias del grupo.
-                </p>
-
-                <div id="conclusion" class="conclusion">
-                    Calcula los conjuntos para descubrir sus relaciones.
-                </div>
-
-            </section>
-
-        </main>
-
-
-        <!-- PIE DE PÁGINA -->
-        <footer>
-
-            <p class="footer-titulo">
-                MISIÓN VALIS
+            <button id="calcular">Calcular conjuntos ↗</button>
+            <p id="mensaje" class="mensaje" aria-live="polite">
+                Selecciona las materias para comenzar.
             </p>
+        </section>
 
+        <section class="panel">
+            <span class="numero">MISIÓN 03</span>
+            <h2>Universo de estudiantes</h2>
             <p>
-                Proyecto de Matemáticas Discretas
+                El universo U contiene a todos los estudiantes incluidos
+                en esta demostración. Cada estudiante forma parte del
+                universo, independientemente de sus preferencias.
             </p>
+            <div id="universo" class="lista-universo"></div>
+            <p class="nota">
+                U = conjunto de todos los estudiantes considerados.
+            </p>
+        </section>
 
+        <section class="panel">
+            <span class="numero">MISIÓN 04</span>
+            <h2>Diagrama de Venn</h2>
             <p>
-                Teoría de Conjuntos · Unión · Intersección · Diferencia
+                Observa cómo se distribuyen los estudiantes según las
+                materias seleccionadas. La zona compartida representa
+                a quienes prefieren ambas materias.
             </p>
 
-        </footer>
+            <div class="leyenda">
+                <span class="color-a"></span>
+                <span id="nombreA">Conjunto A</span>
+                <span class="color-b"></span>
+                <span id="nombreB">Conjunto B</span>
+            </div>
 
-    </div>
+            <div class="venn">
+                <div class="region region-a">
+                    <h3>Solo A</h3>
+                    <p class="descripcion-region">A − B</p>
+                    <div id="soloA" class="estudiantes"></div>
+                </div>
 
+                <div class="region region-interseccion">
+                    <h3>Intersección</h3>
+                    <p class="descripcion-region">A ∩ B</p>
+                    <div id="ambos" class="estudiantes"></div>
+                </div>
+
+                <div class="region region-b">
+                    <h3>Solo B</h3>
+                    <p class="descripcion-region">B − A</p>
+                    <div id="soloB" class="estudiantes"></div>
+                </div>
+            </div>
+
+            <p class="nota">
+                Cada estudiante aparece en la región que corresponde
+                a sus preferencias académicas.
+            </p>
+        </section>
+
+        <section class="panel">
+            <span class="numero">MISIÓN 05</span>
+            <h2>Operaciones de conjuntos</h2>
+            <p>
+                Utiliza las operaciones para comparar los conjuntos,
+                encontrar elementos comunes y reconocer diferencias.
+            </p>
+
+            <div class="operaciones">
+                <article class="operacion">
+                    <div class="simbolo">∪</div>
+                    <h3>Unión</h3>
+                    <p class="formula">A ∪ B</p>
+                    <p>
+                        Reúne a los estudiantes que pertenecen a A,
+                        a B o a ambos conjuntos, sin repetirlos.
+                    </p>
+                    <div id="union" class="resultado"></div>
+                </article>
+
+                <article class="operacion">
+                    <div class="simbolo">∩</div>
+                    <h3>Intersección</h3>
+                    <p class="formula">A ∩ B</p>
+                    <p>
+                        Contiene a los estudiantes que pertenecen
+                        simultáneamente a ambos conjuntos.
+                    </p>
+                    <div id="interseccion" class="resultado"></div>
+                </article>
+
+                <article class="operacion">
+                    <div class="simbolo">−</div>
+                    <h3>Diferencia</h3>
+                    <p class="formula">A − B</p>
+                    <p>
+                        Contiene a los estudiantes que pertenecen a A,
+                        pero no a B.
+                    </p>
+                    <div id="diferencia" class="resultado"></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="panel conclusion-panel">
+            <span class="numero">INFORME FINAL</span>
+            <h2>¿Qué descubriste?</h2>
+            <p>
+                Analiza los resultados para comprender las relaciones
+                entre las preferencias académicas de los estudiantes.
+            </p>
+            <div id="conclusion" class="conclusion">
+                Calcula los conjuntos para descubrir sus relaciones.
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-titulo">MISIÓN VALIS</p>
+        <p>Proyecto de Matemáticas Discretas</p>
+        <p>Teoría de Conjuntos · Unión · Intersección · Diferencia</p>
+    </footer>
+
+</div>
 </body>
 </html>
