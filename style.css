@@ -1,5 +1,3 @@
-/* CONFIGURACIÓN GENERAL */
-
 * {
     box-sizing: border-box;
 }
@@ -9,22 +7,21 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f6fb;
-    color: #222;
+    color: #333;
     line-height: 1.6;
 }
 
 .container {
     width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
+    max-width: 1000px;
+    margin: auto;
     padding: 25px 0;
 }
-
 
 /* ENCABEZADO */
 
 .hero {
-    background-color: #4b3f8f;
+    background: #4b3f8f;
     color: white;
     text-align: center;
     padding: 35px 25px;
@@ -37,7 +34,6 @@ body {
     font-size: 13px;
     font-weight: bold;
     letter-spacing: 2px;
-    margin-bottom: 12px;
 }
 
 .hero h1 {
@@ -46,7 +42,6 @@ body {
 }
 
 .subtitulo {
-    font-size: 16px;
     max-width: 650px;
     margin: 15px auto;
 }
@@ -55,14 +50,12 @@ body {
     margin-top: 20px;
     font-size: 23px;
     font-weight: bold;
-    letter-spacing: 3px;
 }
 
-
-/* PANELES Y TARJETAS */
+/* TARJETAS */
 
 .panel {
-    background-color: white;
+    background: white;
     padding: 25px;
     margin-bottom: 22px;
     border-radius: 12px;
@@ -72,13 +65,6 @@ body {
 .panel h2 {
     color: #4b3f8f;
     margin-top: 8px;
-    margin-bottom: 15px;
-    font-size: 24px;
-}
-
-.panel p {
-    margin-top: 10px;
-    margin-bottom: 12px;
 }
 
 .historia {
@@ -86,14 +72,11 @@ body {
 }
 
 .numero {
-    display: inline-block;
     color: #6c63c9;
     font-size: 12px;
     font-weight: bold;
     letter-spacing: 1.5px;
-    margin-bottom: 5px;
 }
-
 
 /* SELECTORES */
 
@@ -118,55 +101,42 @@ body {
 select {
     width: 100%;
     padding: 12px;
-    font-size: 15px;
-    font-family: Arial, sans-serif;
     border: 1px solid #d5d1ee;
     border-radius: 7px;
-    background-color: white;
-    color: #222;
+    background: white;
+    font-size: 15px;
     cursor: pointer;
 }
 
 select:focus {
     outline: 2px solid #6c63c9;
-    border-color: #6c63c9;
 }
 
-
-/* BOTÓN PRINCIPAL */
+/* BOTÓN */
 
 button {
-    display: inline-block;
     padding: 12px 20px;
-    background-color: #6c63c9;
+    background: #6c63c9;
     color: white;
     border: none;
     border-radius: 7px;
     font-size: 15px;
     font-weight: bold;
-    font-family: Arial, sans-serif;
     cursor: pointer;
-    transition: background-color 0.2s ease,
-                transform 0.2s ease;
+    transition: background 0.2s, transform 0.2s;
 }
 
 button:hover {
-    background-color: #5149a5;
+    background: #5149a5;
     transform: translateY(-2px);
-}
-
-button:active {
-    transform: translateY(0);
 }
 
 .mensaje {
     color: #4b3f8f;
     font-weight: bold;
-    margin-top: 15px;
 }
 
-
-/* UNIVERSO DE ESTUDIANTES */
+/* UNIVERSO */
 
 .lista-universo {
     display: flex;
@@ -176,9 +146,8 @@ button:active {
 }
 
 .lista-universo span {
-    display: inline-block;
     padding: 8px 13px;
-    background-color: #e9e7ff;
+    background: #e9e7ff;
     color: #4b3f8f;
     border-radius: 20px;
     font-size: 14px;
@@ -190,8 +159,7 @@ button:active {
     font-style: italic;
 }
 
-
-/* LEYENDA DEL DIAGRAMA */
+/* LEYENDA */
 
 .leyenda {
     display: flex;
@@ -200,7 +168,6 @@ button:active {
     flex-wrap: wrap;
     gap: 8px;
     margin: 20px 0;
-    font-size: 14px;
 }
 
 .color-a,
@@ -213,13 +180,12 @@ button:active {
 }
 
 .color-a {
-    background-color: #8dbcf0;
+    background: #8dbcf0;
 }
 
 .color-b {
-    background-color: #f3a2c6;
+    background: #f3a2c6;
 }
-
 
 /* DIAGRAMA DE VENN */
 
@@ -259,14 +225,14 @@ button:active {
 
 .region-a {
     left: 15px;
-    background-color: rgba(141, 188, 240, 0.65);
+    background: rgba(141, 188, 240, 0.65);
     border: 2px solid #78a9e3;
     z-index: 1;
 }
 
 .region-b {
     right: 15px;
-    background-color: rgba(243, 162, 198, 0.65);
+    background: rgba(243, 162, 198, 0.65);
     border: 2px solid #e48bb3;
     z-index: 1;
 }
@@ -278,8 +244,7 @@ button:active {
     width: 125px;
     height: 125px;
     padding: 8px;
-    border-radius: 50%;
-    background-color: rgba(233, 231, 255, 0.96);
+    background: rgba(233, 231, 255, 0.96);
     border: 2px solid #a59ce8;
     z-index: 2;
 }
@@ -302,14 +267,12 @@ button:active {
 }
 
 .estudiantes span {
-    display: inline-block;
     padding: 3px 6px;
-    background-color: rgba(255, 255, 255, 0.85);
+    background: rgba(255, 255, 255, 0.85);
     border-radius: 10px;
 }
 
-
-/* OPERACIONES DE CONJUNTOS */
+/* OPERACIONES */
 
 .operaciones {
     display: grid;
@@ -319,7 +282,7 @@ button:active {
 }
 
 .operacion {
-    background-color: #f8f7ff;
+    background: #f8f7ff;
     border: 1px solid #e2dff8;
     border-radius: 10px;
     padding: 18px;
@@ -329,7 +292,6 @@ button:active {
 
 .operacion h3 {
     color: #4b3f8f;
-    margin: 8px 0;
 }
 
 .operacion p {
@@ -342,8 +304,8 @@ button:active {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto;
-    background-color: #6c63c9;
+    margin: auto;
+    background: #6c63c9;
     color: white;
     border-radius: 50%;
     font-size: 25px;
@@ -359,13 +321,11 @@ button:active {
 .resultado {
     margin-top: 15px;
     padding: 10px;
-    background-color: #e9e7ff;
+    background: #e9e7ff;
     color: #4b3f8f;
     border-radius: 7px;
     overflow-wrap: anywhere;
-    font-size: 14px;
 }
-
 
 /* CONCLUSIÓN */
 
@@ -376,11 +336,10 @@ button:active {
 .conclusion {
     margin-top: 15px;
     padding: 18px;
-    background-color: #f0efff;
+    background: #f0efff;
     border-radius: 8px;
     color: #39316e;
 }
-
 
 /* PIE DE PÁGINA */
 
@@ -402,14 +361,11 @@ footer p {
     letter-spacing: 2px;
 }
 
-
-/* DISEÑO ADAPTABLE */
+/* ADAPTACIÓN A CELULARES */
 
 @media (max-width: 600px) {
-
     .container {
         width: 94%;
-        padding-top: 15px;
     }
 
     .hero {
@@ -422,10 +378,6 @@ footer p {
 
     .subtitulo {
         font-size: 14px;
-    }
-
-    .hero-decoration {
-        font-size: 19px;
     }
 
     .panel {
@@ -469,17 +421,8 @@ footer p {
         font-size: 13px;
     }
 
-    .descripcion-region {
-        font-size: 12px;
-    }
-
     .estudiantes {
         font-size: 10px;
-        gap: 2px;
-    }
-
-    .estudiantes span {
-        padding: 2px 4px;
     }
 
     .region-interseccion {
@@ -496,7 +439,5 @@ footer p {
 
     .region-interseccion .descripcion-region {
         font-size: 10px;
-        margin-bottom: 3px;
     }
-
 }
