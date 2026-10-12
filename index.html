@@ -1,118 +1,145 @@
-```html
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="container">
 
-    <title>Juego de Conjuntos</title>
+    <header>
+        <p class="etiqueta">MISIÓN VALIS · MATEMÁTICAS DISCRETAS</p>
+        <h1>Laboratorio de Conjuntos</h1>
+        <p>
+            Descubre qué materias prefieren los estudiantes
+            y explora las relaciones entre los conjuntos.
+        </p>
+    </header>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+    <section class="panel historia">
+        <h2>La misión</h2>
+        <p>
+            El equipo de Misión VALIS necesita organizar a los estudiantes
+            según sus preferencias académicas. Tu misión es elegir dos
+            materias, construir sus conjuntos y descubrir qué estudiantes
+            comparten los mismos intereses.
+        </p>
+    </section>
 
-<body>
+    <section class="panel">
+        <h2>1. Selecciona las materias</h2>
+        <p>Elige una materia para el conjunto A y otra para el conjunto B.</p>
 
-    <div class="container">
-
-        <header>
-            <h1> Juego de Conjuntos</h1>
-            <p>
-                Descubre qué materias prefieren los estudiantes
-                y observa las relaciones entre los conjuntos.
-            </p>
-        </header>
-
-        <section class="question">
-            <h2> Pregunta 1</h2>
-
-            <p>
-                ¿Qué materia te gusta más?
-            </p>
-
-            <div class="buttons">
-                <button onclick="seleccionar('Matemáticas')">
-                     Matemáticas
-                </button>
-
-                <button onclick="seleccionar('Programación')">
-                     Programación
-                </button>
-
-                <button onclick="seleccionar('Inglés')">
-                     Inglés
-                </button>
-            </div>
-        </section>
-
-        <section id="resultado" class="resultado">
-            Selecciona una materia para comenzar.
-        </section>
-
-        <section class="venn-section">
-
-            <h2> Diagrama de Venn</h2>
-
-            <div class="venn">
-
-                <div class="circle circle1">
-                    <span>Matemáticas</span>
-                </div>
-
-                <div class="circle circle2">
-                    <span>Programación</span>
-                </div>
-
-                <div class="intersection">
-                    Intersección
-                </div>
-
+        <div class="selectores">
+            <div class="selector">
+                <label for="materiaA">Conjunto A</label>
+                <select id="materiaA">
+                    <option value="Matemáticas">Matemáticas</option>
+                    <option value="Programación">Programación</option>
+                    <option value="Inglés">Inglés</option>
+                </select>
             </div>
 
-        </section>
+            <div class="selector">
+                <label for="materiaB">Conjunto B</label>
+                <select id="materiaB">
+                    <option value="Programación">Programación</option>
+                    <option value="Matemáticas">Matemáticas</option>
+                    <option value="Inglés">Inglés</option>
+                </select>
+            </div>
+        </div>
 
-        <section class="operations">
+        <button id="calcular">Calcular conjuntos</button>
 
-            <h2> Operaciones de conjuntos</h2>
+        <p id="mensaje" class="mensaje" aria-live="polite">
+            Selecciona las materias y calcula los conjuntos.
+        </p>
+    </section>
 
-            <div class="cards">
+    <section class="panel">
+        <h2>2. Universo de estudiantes</h2>
+        <p>
+            El universo U contiene a todos los estudiantes considerados
+            en esta demostración.
+        </p>
 
-                <div class="card">
-                    <h3>∪ Unión</h3>
-                    <p>
-                        Reúne todos los elementos que pertenecen
-                        a cualquiera de los conjuntos.
-                    </p>
-                </div>
+        <div id="universo" class="lista-universo"></div>
+        <p class="nota">U = conjunto de todos los estudiantes.</p>
+    </section>
 
-                <div class="card">
-                    <h3>∩ Intersección</h3>
-                    <p>
-                        Contiene los elementos que pertenecen
-                        a ambos conjuntos.
-                    </p>
-                </div>
+    <section class="panel">
+        <h2>3. Diagrama de Venn</h2>
 
-                <div class="card">
-                    <h3>− Diferencia</h3>
-                    <p>
-                        Contiene los elementos que pertenecen
-                        a un conjunto pero no al otro.
-                    </p>
-                </div>
+        <div class="leyenda">
+            <span class="color-a"></span>
+            <span id="nombreA">Conjunto A</span>
+            <span class="color-b"></span>
+            <span id="nombreB">Conjunto B</span>
+        </div>
 
+        <div class="venn">
+            <div class="region region-a">
+                <h3>Solo A</h3>
+                <div id="soloA" class="estudiantes"></div>
             </div>
 
-        </section>
+            <div class="region region-interseccion">
+                <h3>A ∩ B</h3>
+                <p class="descripcion-region">Ambos conjuntos</p>
+                <div id="ambos" class="estudiantes"></div>
+            </div>
 
-        <footer>
-            <p>Proyecto de Matemáticas Discretas</p>
-            <p>Temática: Conjuntos</p>
-        </footer>
+            <div class="region region-b">
+                <h3>Solo B</h3>
+                <div id="soloB" class="estudiantes"></div>
+            </div>
+        </div>
 
-    </div>
+        <p class="nota">
+            Cada estudiante aparece en la región que corresponde
+            a sus preferencias.
+        </p>
+    </section>
 
-    <script src="script.js"></script>
+    <section class="panel">
+        <h2>4. Operaciones de conjuntos</h2>
 
-</body>
-</html>
-```
+        <div class="operaciones">
+
+            <article class="operacion">
+                <h3>Unión: A ∪ B</h3>
+                <p>
+                    Reúne a los estudiantes que pertenecen a A,
+                    a B o a ambos conjuntos.
+                </p>
+                <div id="union" class="resultado"></div>
+            </article>
+
+            <article class="operacion">
+                <h3>Intersección: A ∩ B</h3>
+                <p>
+                    Incluye solamente a los estudiantes que pertenecen
+                    a los dos conjuntos.
+                </p>
+                <div id="interseccion" class="resultado"></div>
+            </article>
+
+            <article class="operacion">
+                <h3>Diferencia: A − B</h3>
+                <p>
+                    Incluye a los estudiantes que pertenecen a A,
+                    pero no pertenecen a B.
+                </p>
+                <div id="diferencia" class="resultado"></div>
+            </article>
+
+        </div>
+    </section>
+
+    <section class="panel">
+        <h2>5. ¿Qué descubriste?</h2>
+        <div id="conclusion" class="conclusion">
+            Calcula los conjuntos para descubrir sus relaciones.
+        </div>
+    </section>
+
+    <footer>
+        <p>Proyecto de Matemáticas Discretas</p>
+        <p>Temática: Teoría de Conjuntos · Misión VALIS</p>
+    </footer>
+
+</div>
